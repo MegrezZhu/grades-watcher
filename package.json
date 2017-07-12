@@ -1,0 +1,25 @@
+{
+  "name": "grades-watcher",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Megrez Zhu",
+  "license": "MIT",
+  "dependencies": {
+    "node-schedule": "^1.2.3",
+    "sysu-jwxt": "^0.1.0",
+    "wechat-inform": "^1.0.1",
+    "wide-align": "^1.1.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.0.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-node": "^5.0.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1"
+  }
+}

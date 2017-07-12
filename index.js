@@ -17,7 +17,7 @@ me.login()
     grades.forEach(grade => {
       pool.set(grade.id, grade);
     });
-    send('初始化', simplify(grades));
+    send('初始化成功，开始轮询', '当前已有:\n' + simplify(grades));
 
     schedule.scheduleJob(recurRule, async () => {
       let set = new Set();

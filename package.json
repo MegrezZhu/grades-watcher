@@ -4,15 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js"
   },
   "author": "Megrez Zhu",
+  "repository": "https://github.com/MegrezZhu/grades-watcher",
   "license": "MIT",
   "dependencies": {
+    "lodash": "^4.17.4",
+    "moment": "^2.18.1",
     "node-schedule": "^1.2.3",
-    "sysu-jwxt": "^0.1.1",
+    "require-indexify": "^1.0.0",
+    "sysu-jwxt": "^0.1.2",
     "wechat-inform": "^1.0.1",
-    "wide-align": "^1.1.2"
+    "wide-align": "^1.1.2",
+    "winston": "^2.3.1",
+    "winston-daily-rotate-file": "^1.4.6"
   },
   "devDependencies": {
     "eslint": "^4.0.0",

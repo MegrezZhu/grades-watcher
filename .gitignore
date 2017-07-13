@@ -1,4 +1,4 @@
 .idea/
 node_modules/
-logs/
+logs/*.log
 secret.js

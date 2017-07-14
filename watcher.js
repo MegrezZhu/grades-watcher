@@ -3,6 +3,7 @@ const WechatInform = require('wechat-inform');
 const schedule = require('node-schedule');
 const align = require('wide-align');
 const {logger} = require('./lib');
+const assert = require('assert');
 
 class Watcher {
   constructor (config) {
@@ -30,6 +31,9 @@ class Watcher {
       logger.info('querying');
       let set = new Set();
       let grades = await this.me.getGrades(year, semester);
+
+      assert(grades.length >= this.pool.size, 'error: incomplete grades list');
+
       grades.forEach(grade => {
         if (!this.pool.has(grade.id)) {
           // new course grade!

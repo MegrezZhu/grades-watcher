@@ -15,7 +15,7 @@
     "moment": "^2.18.1",
     "node-schedule": "^1.2.3",
     "require-indexify": "^1.0.0",
-    "sysu-jwxt": "^0.1.2",
+    "sysu-jwxt": "^0.2.0",
     "wechat-inform": "^1.0.1",
     "wide-align": "^1.1.2",
     "winston": "^2.3.1",

@@ -29,7 +29,7 @@ class Watcher {
   async task (year, semester) {
     try {
       logger.info('querying');
-      let set = new Set();
+      let set = [];
       let grades = await this.me.getGrades(year, semester);
 
       assert(grades.length >= this.pool.size, 'error: incomplete grades list');
@@ -38,12 +38,12 @@ class Watcher {
         if (!this.pool.has(grade.id)) {
           // new course grade!
           logger.info(`new grade: ${grade.course}`);
-          set.add(grade);
+          set.push(grade);
           this.pool.add(grade);
         }
       });
       if (set.size) {
-        this.send('出成绩了', simplify([...set]));
+        this.send('出成绩了', simplify(set));
       }
     } catch (err) {
       // re-login

@@ -21,7 +21,7 @@ class Watcher {
     logger.info(`initial grades: ${grades.map(o => o.course)}`);
     this.send('初始化成功，开始轮询', '当前已有\n' + simplify(grades));
 
-    schedule.scheduleJob(scheduleConfig, this.task.bind(this));
+    schedule.scheduleJob(scheduleConfig, this.task.bind(this, this.config.watch.year, this.config.watch.semester));
 
     logger.info('done');
   }
@@ -39,15 +39,18 @@ class Watcher {
           // new course grade!
           logger.info(`new grade: ${grade.course}`);
           set.push(grade);
-          this.pool.add(grade);
+          this.pool.set(grade.id, grade);
         }
       });
-      if (set.size) {
+      if (set.length) {
         this.send('出成绩了', simplify(set));
       }
     } catch (err) {
       // re-login
-      logger.error('failed, re-login');
+      // logger.error('failed, re-login');
+      logger.error(`failed`);
+      logger.error(err.stack);
+      logger.info('re-login')
       this.me.login();
     }
   }

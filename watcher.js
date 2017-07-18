@@ -9,7 +9,6 @@ class Watcher {
   constructor (config) {
     this.me = new Jwxt(config.netid, config.password, {logger});
     this.wi = WechatInform(config.wechat);
-    this.pool = new Map();
     this.config = config;
   }
 
@@ -19,6 +18,8 @@ class Watcher {
     await this.me.login();
     let grades = await this.me.getGrades(this.config.watch.year, this.config.watch.semester);
     logger.info(`initial grades: ${grades.map(o => o.course)}`);
+    this.pool = new Map(grades.map(grade => [grade.id, grade]));
+
     this.send('初始化成功，开始轮询', '当前已有\n' + simplify(grades));
 
     schedule.scheduleJob(scheduleConfig, this.task.bind(this, this.config.watch.year, this.config.watch.semester));
